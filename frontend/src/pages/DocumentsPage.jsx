@@ -24,11 +24,17 @@ export default function DocumentsPage() {
   }, [carregarDocumentos]);
 
   return (
-    <section>
+    <section className="space-y-8">
       <UploadComponent onUploaded={carregarDocumentos} />
-      <h2>Documentos enviados</h2>
-      {erro && <p role="alert">{erro}</p>}
-      <DocumentList documents={documents} />
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
+        <h2 className="text-lg font-semibold text-slate-800 mb-4">Documentos enviados</h2>
+        {erro && (
+          <p role="alert" className="mb-4 rounded-md bg-red-50 px-4 py-2 text-sm text-red-700">
+            {erro}
+          </p>
+        )}
+        <DocumentList documents={documents} />
+      </div>
     </section>
   );
 }
